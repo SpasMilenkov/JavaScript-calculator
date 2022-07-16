@@ -3,7 +3,8 @@ const input = prompt().replace(' ', '').split('')
 compute.addEventListener('click', operate())
 const equation = document.getElementById('results').textContent.replace(' ', '');
 
-function parseString(arr){
+function calcValue(arr){
+    arr = arr.split(' ');
     while(arr.length !== 1){
         let multiplication = arr.indexOf('*');
         let division = arr.indexOf('/');
@@ -18,11 +19,11 @@ function parseString(arr){
                     before.push(operate(arr[multiplication-1], arr[multiplication+1], '*'));
                     arr = before.concat(after);
             }
-                if(multiplication > division){
-                    let before = arr.slice(0, division-1);
-                    let after = arr.slice(division+2);
-                    before.push(operate(arr[division-1], arr[division+1], '/'));
-                    arr = before.concat(after);
+            if(multiplication > division){
+                let before = arr.slice(0, division-1);
+                let after = arr.slice(division+2);
+                before.push(operate(arr[division-1], arr[division+1], '/'));
+                arr = before.concat(after);
             }
             multiplication = arr.indexOf('*');
             division = arr.indexOf('/');
@@ -32,6 +33,9 @@ function parseString(arr){
         arr.unshift(product);
     }
     console.log(arr[0]);
+}
+function parseString(str){
+
 }
 function operate(x, y, operator){
     switch(operator){
@@ -61,5 +65,3 @@ function multiply(x,y){
 function divide(x,y){
     return multiply(x, 1 / y)
 }
-parseString(input)
-// parseString([5,'+',3,'+',4,'/',2,'*', 5]);
