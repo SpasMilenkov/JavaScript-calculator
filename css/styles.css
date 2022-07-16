@@ -80,6 +80,11 @@ main{
 #results{
     grid-area: results;
     background-color: rgb(54, 57, 63);
+    color: white;
+    font-size: 5rem;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: row-reverse;
 }
 #nine{
     grid-area: nine;
