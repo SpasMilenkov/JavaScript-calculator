@@ -131,3 +131,12 @@ main{
 #compute{
     grid-area: compute;
 }
+
+@media only screen and (max-width: 750px){
+    .button h1{
+        font-size: 3rem;
+    }
+    #results{
+        font-size: 3rem;
+    }
+}
