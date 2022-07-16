@@ -1,6 +1,6 @@
 const equation = document.getElementById('results');
 const compute = document.getElementById('compute');
-compute.addEventListener('click', calcValue(equation.textContent));   //get the = button to solve the equation when pressed
+compute.addEventListener('click', calcValue);   //get the = button to solve the equation when pressed
 
 const del = document.getElementById('delete');
 del.addEventListener('click',() => {
@@ -18,8 +18,8 @@ buttons.forEach(button => button.addEventListener( 'click', () => {
     equation.textContent += `${button.textContent}`;
 }));
 
-function calcValue(arr){                    //the main logic behind solving the equation
-    arr = arr.split(' ');       //splitting to distinguish numbers from operations
+function calcValue(){                    //the main logic behind solving the equation
+    arr = equation.textContent.split(' ');       //splitting to distinguish numbers from operations
     while(arr.length !== 1){ //while loop that does multiplication and division prioritizing them over addition and subtraction
         let multiplication = arr.indexOf('*'); 
         let division = arr.indexOf('/');
@@ -50,7 +50,7 @@ function calcValue(arr){                    //the main logic behind solving the 
             arr.unshift(product);
         }
     }
-    console.log(arr[0]); //returns the result
+    equation.textContent = arr[0] //returns the result
 }
 function parseString(str){
 
